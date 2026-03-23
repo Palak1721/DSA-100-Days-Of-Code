@@ -1,0 +1,51 @@
+/*Check if matrix is symmetric:
+
+1. First check if matrix is square (m == n)
+2. Compare element at [i][j] with element at [j][i]
+3. If any pair doesn't match, not symmetric
+4. If all pairs match, it's symmetric*/
+
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int m, n;
+
+    // Input rows and columns
+    scanf("%d %d", &m, &n);
+
+    int mat[100][100];
+
+    // Input matrix elements
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    bool isSymmetric = true;
+
+    // Check if square matrix
+    if (m != n) {
+        isSymmetric = false;
+    } else {
+        // Check symmetry (only upper triangle)
+        for (int i = 0; i < m && isSymmetric; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (mat[i][j] != mat[j][i]) {
+                    isSymmetric = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Output result
+    if (isSymmetric) {
+        printf("Symmetric Matrix\n");
+    } else {
+        printf("Not a Symmetric Matrix\n");
+    }
+
+    return 0;
+}
