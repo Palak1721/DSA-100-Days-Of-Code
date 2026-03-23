@@ -1,0 +1,28 @@
+/*Reverse a string using two-pointer technique:
+
+1. Use two pointers: one at start, one at end
+2. Swap characters at both pointers
+3. Move pointers toward center
+4. Stop when pointers meet*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[1000];
+    scanf("%s", str);
+    
+    int left = 0;
+    int right = strlen(str) - 1;
+    
+    while (left < right) {
+        char temp = str[left];
+        str[left] = str[right];
+        str[right] = temp;
+        left++;
+        right--;
+    }
+    
+    printf("%s\n", str);
+    return 0;
+}
